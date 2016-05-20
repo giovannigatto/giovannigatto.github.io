@@ -35,7 +35,16 @@
   <li><a href="https://goo.gl/41NbkU">Cocktail: intro</a>
 </li>
 </ol>
-<input type=text>
+<script>
+  function secret(password){
+    if (password=='ciao'){
+      document.write("<a href='https://goo.gl/41NbkU'>Cocktail: intro</a>")
+    }
+  }
+  
+</script>
+<input id=t1 type=text>
+<input type=button onclick='secret(t1.text)'>
       <footer class="site-footer">
 
         <span class="site-footer-credits">Tornare periodicamente su questo sito per verificare gli aggiornamenti.</span>
