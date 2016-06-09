@@ -1,0 +1,54 @@
+<html>
+<body>
+
+
+<p>
+Ungaretti nacque ad:
+</p>
+
+<input type = "text" id="text1">
+
+
+<script type="text/javascript">
+var risposte1 = ["Alessandria","Alessandria d'Egitto","alessandria","alessandria d'egitto"];
+var sbagliato = ["No (scrivi la risposta qui sopra)","Errore (scrivi la risposta qui sopra)"];
+var checkiftrue = 0;
+var x = 0;
+function verify1(risposta){
+	for (i = 0; i < risposta.length; i++) {
+    	if (risposta[i] == text1.value){
+    		checkiftrue = 1;
+		}
+	}
+	if (checkiftrue == 1){
+		document.getElementById('demo').innerHTML = "Bravo! La risposta era proprio <b>" + text1.value + "</b>";
+	}
+	else {
+		document.getElementById('demo').innerHTML = sbagliato[x];
+		if (x==0){
+			x=1;
+		}
+		else {
+			x = 0;
+		}
+	}
+	text1.value = '';
+	checkiftrue = 0;
+}
+
+	function verify(risposta) {
+		if (text1.value == risposta){
+			document.getElementById('demo').innerHTML = "Bravo!";
+		}
+		else {
+			document.getElementById('demo').innerHTML = "Sbagliato";
+		}
+	}
+
+</script>
+
+<p id="demo">Inserisci la risposta e poi clicca</p>
+
+<input type = "button" value="Clicca" onclick=verify1(risposte1)></button>
+</body>
+</html>
