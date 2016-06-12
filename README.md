@@ -1,2 +1,4 @@
 # giovannigatto.github.io
-icf-cy classificazione internazionale del funzionamento
+
+Sito sperimentale a carattere didattico.
+È in via di allestimento.
