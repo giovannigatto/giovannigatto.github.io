@@ -23,6 +23,18 @@
 <!-- METTI QUI LE NOTIZIE DEGLI AGGIORNAMENTI -->
 <P>Una pagina con notizie e video su vari argomenti.</P>
 
+<!-- NEWEST NEWS HERE -->
+<script src="https://connect.soundcloud.com/sdk/sdk-3.1.2.js"></script>
+<script>
+SC.initialize({
+  client_id: 'YOUR_CLIENT_ID'
+});
+
+var track_url = 'http://soundcloud.com/forss/flickermood';
+SC.oEmbed(track_url, { auto_play: true }).then(function(oEmbed) {
+  console.log('oEmbed response: ', oEmbed);
+});
+
 <!-- METTI QUI GLI ESERCIZI -->
 <h1>Storia: La Grande Guerra</h1>
 <h2>Esercizi e notizie sulla Prima guerra mondiale</h2>
