@@ -1,54 +1,191 @@
-<html>
-<body>
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<style>
+body {
+  color : black;
+  background-color: orange;
+  font-size: 20pt;
+}
+b {background-color: yellow}
 
-
-<p>
-Ungaretti nacque ad:
-</p>
-
-<input type = "text" id="text1">
-
-
-<script type="text/javascript">
-var risposte1 = ["Alessandria","Alessandria d'Egitto","alessandria","alessandria d'egitto"];
-var sbagliato = ["No (scrivi la risposta qui sopra)","Errore (scrivi la risposta qui sopra)"];
-var checkiftrue = 0;
-var x = 0;
-function verify1(risposta){
-	for (i = 0; i < risposta.length; i++) {
-    	if (risposta[i] == text1.value){
-    		checkiftrue = 1;
-		}
-	}
-	if (checkiftrue == 1){
-		document.getElementById('demo').innerHTML = "Bravo! La risposta era proprio <b>" + text1.value + "</b>";
-	}
-	else {
-		document.getElementById('demo').innerHTML = sbagliato[x];
-		if (x==0){
-			x=1;
-		}
-		else {
-			x = 0;
-		}
-	}
-	text1.value = '';
-	checkiftrue = 0;
+p {
+    color: rgb(0,0,255);
 }
 
-	function verify(risposta) {
-		if (text1.value == risposta){
-			document.getElementById('demo').innerHTML = "Bravo!";
-		}
-		else {
-			document.getElementById('demo').innerHTML = "Sbagliato";
-		}
-	}
+input[type=text] {
+    width: 100%%;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    background-image: url('http://files.softicons.com/download/web-icons/web-blue-buttons-by-axialis-team/png/16/Question.png');
+    background-position: 1px 1px;
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+}
+
+</style>
+
+<body>
+<h1>Domande su Giuseppe Ungaretti</h1>
+
+<p>Scrivi la risposta nella casella di testo e poi premi invio</p>
+<p>Se la risposta è esatta compare "OK" sulla sinistra dello schermo.</p>
+<script>
+
+  function isItRight(textid,pos,risposta,rg){
+    var xx = document.getElementById(textid);
+  if (risposta.toLowerCase() == rg.toLowerCase())
+          {
+    pos.style.backgroundColor="lightGreen";
+    pos.innerHTML = "[OK]";
+    xx.setAttribute("background-image","http://icons.iconarchive.com/icons/fatcow/farm-fresh/16/emotion-question-icon.png");
+    a = ":)";
+  }
+  else {
+    pos.style.backgroundColor="red";
+    pos.innerHTML = "[X]"
+    a = ":(";
+  }
+  return a;
+}
+
+
+function createText(id,argument,size) {
+    var x = document.createElement("INPUT");
+    x.setAttribute("type", "text");
+    x.setAttribute("placeholder", "...");
+    x.setAttribute("onchange",argument);
+    //x.setAttribute("font-size",20);
+    //x.setAttribute("size",size);
+    x.setAttribute("id",id);
+    document.body.appendChild(x);
+}
+
+function createB(id) {
+    var b = document.createElement("B");
+    b.setAttribute("id",id)
+    document.body.appendChild(b);
+}
+
+function createButton(argument) {
+    var btn = document.createElement("BUTTON");
+    btn.setAttribute("onclick",argument);
+    var t = document.createTextNode("Click");
+    btn.appendChild(t);
+    document.body.appendChild(btn);
+}
+
+function display(demo,domanda){
+  document.write("<br><br><b id="+demo+">[?]</b> ");
+  document.write(domanda);
+};
 
 </script>
 
-<p id="demo">Inserisci la risposta e poi clicca</p>
+<script>
 
-<input type = "button" value="Clicca" onclick=verify1(risposte1)></button>
+
+// Lista delle domande
+var domande = ["1. Quando nacque Ungaretti, nel 1887, 1888 o 1889? Nacque nel... ",
+              "2. Dove nacque Ungaretti, a Novara, Alessandria o Cuneo?)",
+              "3. Il padre lavorava allo scavo del Canale di .....?",
+              "4. Quando morì il padre? Nel...?",
+              "5. Quando andò a studiare a Parigi?",
+              "6. Come si chiamava la prima raccolta di poesie di Ungaretti?",
+              "7. Come si intitola la poesia che comincia così: Una nottata buttato vicino ad un compagno massacrato",
+              "8. Dove ha combattuto Ungaretti...sul...",
+              "9. Quando si trasferì in Brasile?",
+              "10. Quando morì?"];
+
+var ans = ["1888",     //1
+            "Alessandria", //2
+            "Suez",        //3
+            "1890", //4
+            "1912", //5
+            "Il porto sepolto", //6
+            "Veglia", //7
+            "Carso",
+            "1936",
+            "1970"
+            ]
+
+
+// cambia solo la risposta
+a=0; //1
+var domanda = domande [a];
+display("demo"+a,domanda,"text"+a);                                    //1 giusta,length
+createText("text"+a,"this.innerHTML=isItRight(text"+a+",demo"+a+",text"+a+".value,'"+ans[a]+"')",10);
+
+a++; //2
+var domanda = domande[a];
+display("demo"+a,domanda,"text"+a);                                         //2 giusta,length
+createText("text"+a,"this.innerHTML=isItRight(text"+a+",demo"+a+",text"+a+".value,'"+ans[a]+"')",10);
+
+a++; // 3
+var domanda = domande[a];
+display("demo"+a,domanda,"text"+a);                                       //3 giusta,length
+createText("text"+a,"this.innerHTML=isItRight(text"+a+",demo"+a+",text"+a+".value,'"+ans[a]+"')",10);
+
+a++;
+var domanda = domande[a];
+display("demo"+a,domanda,"text"+a);                                       //4 giusta,length
+createText("text"+a,"this.innerHTML=isItRight(text"+a+",demo"+a+",text"+a+".value,'"+ans[a]+"')",10);
+
+a++;
+var domanda = domande[a];
+display("demo"+a,domanda,"text"+a);                                       //5 giusta,length
+createText("text"+a,"this.innerHTML=isItRight(text"+a+",demo"+a+",text"+a+".value,'"+ans[a]+"')",10)
+
+a++;
+var domanda = domande[a];
+display("demo"+a,domanda,"text"+a);                                         //6 giusta,length
+createText("text"+a,"this.innerHTML=isItRight(text"+a+",demo"+a+",text"+a+".value,'"+ans[a]+"')",10)
+
+a++;
+var domanda = domande[a];
+display("demo"+a,domanda,"text"+a);                                         //7 giusta,length
+createText("text"+a,"this.innerHTML=isItRight(text"+a+",demo"+a+",text"+a+".value,'"+ans[a]+"')",10)
+
+a++;
+var domanda = domande[a];
+display("demo"+a,domanda,"text"+a);                                         //8 giusta,length
+createText("text"+a,"this.innerHTML=isItRight(text"+a+",demo"+a+",text"+a+".value,'"+ans[a]+"')",10)
+
+a++;
+var domanda = domande[a];
+display("demo"+a,domanda,"text"+a);                                         //9 giusta,length
+createText("text"+a,"this.innerHTML=isItRight(text"+a+",demo"+a+",text"+a+".value,'"+ans[a]+"')",10)
+
+a++;
+var domanda = domande[a];
+display("demo"+a,domanda,"text"+a);                                         //10 giusta,length
+createText("text"+a,"this.innerHTML=isItRight(text"+a+",demo"+a+",text"+a+".value,'"+ans[a]+"')",10)
+
+
+</script>  
+
+
+
+  
+  
+  
+
+  
+  
+
+
+
+
+
+
+
+
+  <!-- The feedback -->
+  </p>
+
+
+
 </body>
 </html>
