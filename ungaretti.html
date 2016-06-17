@@ -2,10 +2,49 @@
 <meta charset="UTF-8">
 <style>
 body {
+  margin: 0;
+  padding:0;
+  font-family: sans-serif;
   color : black;
   background-color: orange;
   font-size: 20pt;
 }
+
+header{
+  background: #00795f;
+  width: 100%;
+  padding:40px 0;
+  color: white;
+  text-align: center;
+}
+nav ul{
+  background-color: #43a286;
+  overflow: hidden;
+  color: white;
+  padding: 0;
+  text-align: center;
+  margin:0;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+nav ul li{
+  display: inline-block;
+  padding: 20px;
+
+}
+nav ul li:hover{
+  background-color: #399077;
+}
+section{
+  line-height: 1.5em;
+  font-size: 3em;
+  padding: 0px;
+  width: 100%;
+}
+
 b {background-color: yellow}
 
 p {
@@ -25,13 +64,17 @@ input[type=text] {
     box-sizing: border-box;
     border: 2px solid #ccc;
     border-radius: 4px;
-    font-size: 50px;
+    font-size: 80px;
     background-color: white;
     background-position: 1px 1px;
     background-repeat: no-repeat;
     padding: 12px 20px 12px 40px;
 }
 
+
+@media screen and (max-width: 580px{
+
+  })
 </style>
 
 <body>
@@ -45,14 +88,18 @@ input[type=text] {
     var xx = document.getElementById(textid);
   if (risposta.toLowerCase() == rg.toLowerCase())
           {
-    pos.style.backgroundColor="lightGreen";
-    pos.innerHTML = "[OK]";
+    pos.style.backgroundColor="black";
+    pos.style.color="orange";
+    textid.style.backgroundColor="black";
+    textid.style.color = "orange";
+    textid.value = "[" + rg + " ] Esatto!"
     //xx.setAttribute("background-image","http://icons.iconarchive.com/icons/fatcow/farm-fresh/16/emotion-question-icon.png");
     a = ":)";
   }
   else {
     pos.style.backgroundColor="red";
-    pos.innerHTML = "[X]"
+    textid.style.backgroundColor="red";
+    textid.value = "[" + risposta + " ] No!"
     a = ":(";
   }
   return a;
@@ -85,8 +132,7 @@ function createButton(argument) {
 }
 
 function display(demo,domanda){
-  document.write("<br><br><b id="+demo+">[?]</b> ");
-  document.write("<div>"+domanda+"</div>");
+  document.write("<section  id="+demo+">"+domanda+"</section>");
 };
 
 </script>
@@ -95,6 +141,7 @@ function display(demo,domanda){
 
 
 // Lista delle domande
+
 var domande = ["1. Quando nacque Ungaretti, nel 1887, 1888 o 1889? Nacque nel... ",
               "2. Dove nacque Ungaretti, a Novara, Alessandria o Cuneo?)",
               "3. Il padre lavorava allo scavo del Canale di .....?",
@@ -117,7 +164,6 @@ var ans = ["1888",     //1
             "1936",
             "1970"
             ]
-
 
 // cambia solo la risposta
 a=0; //1
