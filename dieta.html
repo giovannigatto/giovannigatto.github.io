@@ -41,8 +41,8 @@ nav ul li:hover{
 section{
   line-height: 1.5em;
   font-size: 3em;
-  padding: 40px;
-  width: 75%;
+  padding: 0px;
+  width: 100%;
 }
 
 b {background-color: yellow}
@@ -88,13 +88,18 @@ input[type=text] {
     var xx = document.getElementById(textid);
   if (risposta.toLowerCase() == rg.toLowerCase())
           {
-    pos.style.backgroundColor="lightGreen";
+    pos.style.backgroundColor="black";
+    pos.style.color="orange";
+    textid.style.backgroundColor="black";
+    textid.style.color = "orange";
     textid.value = "[" + rg + " ] Esatto!"
     //xx.setAttribute("background-image","http://icons.iconarchive.com/icons/fatcow/farm-fresh/16/emotion-question-icon.png");
     a = ":)";
   }
   else {
     pos.style.backgroundColor="red";
+    textid.style.backgroundColor="red";
+    textid.value = "[" + risposta + " ] No!"
     a = ":(";
   }
   return a;
@@ -127,8 +132,7 @@ function createButton(argument) {
 }
 
 function display(demo,domanda){
-  document.write("<div id="+demo+">?</div> ");
-  document.write("<section>"+domanda+"</section>");
+  document.write("<section  id="+demo+">"+domanda+"</section>");
 };
 
 </script>
