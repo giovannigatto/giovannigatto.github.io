@@ -89,13 +89,12 @@ input[type=text] {
   if (risposta.toLowerCase() == rg.toLowerCase())
           {
     pos.style.backgroundColor="lightGreen";
-    pos.innerHTML = "[OK]";
+    textid.value = "[" + rg + " ] Esatto!"
     //xx.setAttribute("background-image","http://icons.iconarchive.com/icons/fatcow/farm-fresh/16/emotion-question-icon.png");
     a = ":)";
   }
   else {
     pos.style.backgroundColor="red";
-    pos.innerHTML = "[X]"
     a = ":(";
   }
   return a;
@@ -128,7 +127,7 @@ function createButton(argument) {
 }
 
 function display(demo,domanda){
-  document.write("<br><br><b id="+demo+">[?]</b> ");
+  document.write("<div id="+demo+">?</div> ");
   document.write("<section>"+domanda+"</section>");
 };
 
