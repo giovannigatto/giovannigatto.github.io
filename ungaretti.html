@@ -86,7 +86,13 @@ input[type=text] {
 
   function isItRight(textid,pos,risposta,rg){
     var xx = document.getElementById(textid);
-  if (risposta.toLowerCase() == rg.toLowerCase())
+    risposta = risposta.trim();
+    risposta = risposta.toLowerCase();
+    rg = rg.toLowerCase();
+    if (risposta.indexOf(rg) != -1){
+      risposta = rg;
+    }
+  if (risposta == rg) 
           {
     pos.style.backgroundColor="black";
     pos.style.color="orange";
