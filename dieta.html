@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<style>
+body {
+  color : black;
+  background-color: orange;
+  font-size: 20pt;
+}
+b {background-color: yellow}
+
+p {
+    width: 100%;
+    color: rgb(0,0,255);
+}
+div {
+    float:left;
+    background-color: lightblue;
+    width:100%;
+    padding: 0px;
+    border: 5px solid navy;
+}
+
+input[type=text] {
+    width: 100%;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 50px;
+    background-color: white;
+    background-position: 1px 1px;
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+}
+
+</style>
+
+<body>
+<h1>Domande su Giuseppe Ungaretti</h1>
+
+<p>Scrivi la risposta nella casella di testo e poi premi invio</p>
+<p>Se la risposta è esatta compare "OK" sulla sinistra dello schermo.</p>
+<script>
+
+  function isItRight(textid,pos,risposta,rg){
+    var xx = document.getElementById(textid);
+  if (risposta.toLowerCase() == rg.toLowerCase())
+          {
+    pos.style.backgroundColor="lightGreen";
+    pos.innerHTML = "[OK]";
+    //xx.setAttribute("background-image","http://icons.iconarchive.com/icons/fatcow/farm-fresh/16/emotion-question-icon.png");
+    a = ":)";
+  }
+  else {
+    pos.style.backgroundColor="red";
+    pos.innerHTML = "[X]"
+    a = ":(";
+  }
+  return a;
+}
+
+
+function createText(id,argument,size) {
+    var x = document.createElement("INPUT");
+    x.setAttribute("type", "text");
+    x.setAttribute("placeholder", "...");
+    x.setAttribute("onchange",argument);
+    //x.setAttribute("font-size",20);
+    //x.setAttribute("size",size);
+    x.setAttribute("id",id);
+    document.body.appendChild(x);
+}
+
+function createB(id) {
+    var b = document.createElement("B");
+    b.setAttribute("id",id)
+    document.body.appendChild(b);
+}
+
+function createButton(argument) {
+    var btn = document.createElement("BUTTON");
+    btn.setAttribute("onclick",argument);
+    var t = document.createTextNode("Click");
+    btn.appendChild(t);
+    document.body.appendChild(btn);
+}
+
+function display(demo,domanda){
+  document.write("<br><br><b id="+demo+">[?]</b> ");
+  document.write("<div>"+domanda+"</div>");
+};
+
+</script>
+
+<script>
+
+
+// Lista delle domande
+
+var domande = new Array();
+var ans = new Array();
+var count = 0;
+function dr(dom,ris){
+  domande[count] = dom;
+  ans[count] = ris;
+  count++;
+}
+
+// 1
+dr("1. Quanti litri di acqua dovrebbe bere una persona al giorno? (1 1,5 3)","1,5")
+// 2
+dr("2. A quanti mesi il bambino va svezzato, a 3 a 6 o a 9?","6");
+// 3
+dr("3. L'attività fisica è consigliabile agli anziani: vero o falso?","vero");
+dr("4. Mangiare molta carne è consigliato, vero o falso?","falso");
+dr("5. Meglio i grassi insaturi di quelli saturi, vero o falso?","vero")
+dr("6. Gli alimenti nuovi vanno imposti al bambino, vero o falso","falso");
+dr("7. Per flessibilità - nell'alimentazione complementare - si intende che gli alimenti vanno dati in modo diverso per ogni bambino, vero o falso?","vero");
+dr("8. Gli alimenti vanno proposti tutti insieme dopo i sei mesi al bambino","falso");
+dr("9. Dopo i 6 mesi si smette l'allattamento, vero o falso","falso");
+dr("10. A 12 mesi l'alimentazione del bambino è simile a quella della famiglia, vero o falso","vero");
+
+
+// cambia solo la risposta
+a=0; //1
+var domanda = domande [a];
+display("demo"+a,domanda,"text"+a);                                    //1 giusta,length
+createText("text"+a,"this.innerHTML=isItRight(text"+a+",demo"+a+",text"+a+".value,'"+ans[a]+"')",10);
+
+a++; //2
+var domanda = domande[a];
+display("demo"+a,domanda,"text"+a);                                         //2 giusta,length
+createText("text"+a,"this.innerHTML=isItRight(text"+a+",demo"+a+",text"+a+".value,'"+ans[a]+"')",10);
+
+a++; // 3
+var domanda = domande[a];
+display("demo"+a,domanda,"text"+a);                                       //3 giusta,length
+createText("text"+a,"this.innerHTML=isItRight(text"+a+",demo"+a+",text"+a+".value,'"+ans[a]+"')",10);
+
+a++;
+var domanda = domande[a];
+display("demo"+a,domanda,"text"+a);                                       //4 giusta,length
+createText("text"+a,"this.innerHTML=isItRight(text"+a+",demo"+a+",text"+a+".value,'"+ans[a]+"')",10);
+
+a++;
+var domanda = domande[a];
+display("demo"+a,domanda,"text"+a);                                       //5 giusta,length
+createText("text"+a,"this.innerHTML=isItRight(text"+a+",demo"+a+",text"+a+".value,'"+ans[a]+"')",10)
+
+a++;
+var domanda = domande[a];
+display("demo"+a,domanda,"text"+a);                                         //6 giusta,length
+createText("text"+a,"this.innerHTML=isItRight(text"+a+",demo"+a+",text"+a+".value,'"+ans[a]+"')",10)
+
+a++;
+var domanda = domande[a];
+display("demo"+a,domanda,"text"+a);                                         //7 giusta,length
+createText("text"+a,"this.innerHTML=isItRight(text"+a+",demo"+a+",text"+a+".value,'"+ans[a]+"')",10)
+
+a++;
+var domanda = domande[a];
+display("demo"+a,domanda,"text"+a);                                         //8 giusta,length
+createText("text"+a,"this.innerHTML=isItRight(text"+a+",demo"+a+",text"+a+".value,'"+ans[a]+"')",10)
+
+a++;
+var domanda = domande[a];
+display("demo"+a,domanda,"text"+a);                                         //9 giusta,length
+createText("text"+a,"this.innerHTML=isItRight(text"+a+",demo"+a+",text"+a+".value,'"+ans[a]+"')",10)
+
+a++;
+var domanda = domande[a];
+display("demo"+a,domanda,"text"+a);                                         //10 giusta,length
+createText("text"+a,"this.innerHTML=isItRight(text"+a+",demo"+a+",text"+a+".value,'"+ans[a]+"')",10)
+
+
+</script>  
+
+
+
+  
+  
+  
+
+  
+  
+
+
+
+
+
+
+
+
+  <!-- The feedback -->
+  </p>
+
+
+
+</body>
+</html>
